@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'Mona Sans';
+  src:
+    url('fonts/Mona/Mona-Sans.woff2') format('woff2 supports variations'),
+    url('fonts/Mona/Mona-Sans.woff2') format('woff2-variations');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+}
+
+.meow {
+  cursor: pointer;
+}
+
+.meow span {
+  --progression: 0;
+  font-family: Mona Sans;
+  color: white;
+  text-transform: uppercase;
+  font-size: 6vw;
+  font-weight: calc(200 + 700*var(--progression));
+  font-stretch: calc(100% + 25%*var(--progression));
+  transition: transform .2s,color .2s,font-stretch .2s,font-weight .2s;
+}
+
+.meow span:hover {
+  --progression: 1;
+}
+
+.meow span:hover +span, 
+.meow span:has(+span:hover) {
+  --progression: 0.7;
+}
+
+.meow span:hover +span +span, 
+.meow span:has(+span+span:hover) {
+  --progression: 0.40;
+}
+
+.meow span:hover +span +span +span, 
+.meow span:has(+span+span+span:hover) {
+  --progression: 0.2;
+}
+
+body, html, * {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
